@@ -1,5 +1,6 @@
 # TODO
 ## Dev
+- venv
 - IA from scratch (pytorch)
 - Faire tourner un modèle d'IA repris sur hugging face (pytorch)
 - API (FastAPI)
