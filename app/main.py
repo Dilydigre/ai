@@ -11,4 +11,4 @@ async def root() -> response_model.StatusResponse:
 	"""
 	Return the status of the API
 	"""
-	return {"Status" : True}
+	return {"status" : True}
