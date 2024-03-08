@@ -19,8 +19,8 @@ If API is running, complete documentation with examples can be found at `<app_ad
 |---|---|---|---|---|
 | / | GET,POST|  - | status as boolean in "status" | if false, error while loading model, if true model is loaded correctly |
 | /status | GET,POST| - | status as boolean in "status" | same as / |
-| /generate | GET,POST | - | status as boolean in "status" and base64 encoded png image in "image" | status = false means error during image generation, image will then be none|
-| /generate_prompt | POST | "description" as str | status as boolean in "status" and base64 encoded png image in "image" | status = false means error during image generation, image will then be none|
+| /generate | GET,POST | - | status as boolean in "status" and base64 encoded png image as str in "image" | status = false means error during image generation, image will then be none|
+| /generate_prompt | POST | "description" as str | status as boolean in "status" and base64 encoded png image as str in "image" | status = false means error during image generation, image will then be none|
 
 ## AI
 
