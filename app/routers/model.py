@@ -17,7 +17,7 @@ class ModelAPI:
 			print_message("INFO","Add api route at "+self.api_base_url+route,"ModelAPI class")
 		self.router.add_api_route(self.api_base_url+route,function,methods=methods,response_model=response_model)
 
-	def get_status(self):
+	def get_status(self) -> StatusResponse:
 		"""
 		Return the status of the loaded model
 		"""
