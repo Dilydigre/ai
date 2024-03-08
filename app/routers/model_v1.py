@@ -52,6 +52,7 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 	return {"status":False,"image":None}
 
 # Try to load model
+model = None
 try:
 	from app.models.model_v1 import Model
 	model = Model()
