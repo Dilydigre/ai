@@ -7,7 +7,7 @@ app = FastAPI()
 app.include_router(model_v1.router.router)
 
 @app.get("/", response_model=response_model.StatusResponse)
-async def root() -> StatusResponse:
+async def root() -> response_model.StatusResponse:
 	"""
 	Return the status of the API
 	"""
