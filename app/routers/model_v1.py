@@ -8,7 +8,7 @@ from PIL import Image
 import io
 import base64 as b64
 import time as tm
-
+import traceback
 
 EMITTER = "API model_v1"
 
@@ -29,6 +29,7 @@ async def generate_face_without_prompt() -> ImageResponse:
 		except Exception as e:
 			if CONFIG['debug']:	# error message if in debug mode
 				print_error(e,EMITTER)
+				traceback.print_exc()
 	return {"status":False,"image":None}
 
 
@@ -49,6 +50,7 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 		except Exception as e:
 			if CONFIG['debug']:	# error message if in debug mode
 				print_error(e,EMITTER)
+				traceback.print_exc()
 	return {"status":False,"image":None}
 
 # Try to load model
@@ -59,6 +61,7 @@ except Exception as e:
 	# If loading fails, print error if debug and set status to "false" i.e not ready
 	if CONFIG['debug']:
 		print_error(e,EMITTER)
+		traceback.print_exc()
 
 # setup router
 router = ModelAPI(CONFIG['api_path']['model_v1'],model is not None)
