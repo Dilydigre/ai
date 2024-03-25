@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 
 # Default values for dataset path and image resizing 
 DATASET_PATH = "../dataset"
-INPUT_IMAGE_SIZE = (512,512)
+INPUT_IMAGE_SIZE = (572,572)
 
 
 # Return the loaded dataset
