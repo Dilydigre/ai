@@ -20,10 +20,9 @@ def test_root_get():
 	assert response.status_code == 200
 	assert response.json() == {"status" : True}
 
-def test_root_post():
+def test_root_post(): # method not allowed
 	response = client.post("/")
-	assert response.status_code == 200
-	assert response.json() == {"status" : True}
+	assert response.status_code == 405
 
 
 
@@ -38,10 +37,9 @@ def test_model1_get():
 	assert response.status_code == 200
 	assert response.json() == {"status" : True}
 
-def test_model1_post():
+def test_model1_post(): # method not allowed
 	response = client.post(API_1_ROUTE)
-	assert response.status_code == 200
-	assert response.json() == {"status" : True}
+	assert response.status_code == 405
 
 # => Path for generation without any user prompt
 def test_model1_generate_get():
@@ -79,10 +77,9 @@ def test_model2_get():
 	assert response.status_code == 200
 	assert response.json() == {"status" : True}
 
-def test_model2_post():
+def test_model2_post(): # method not allowed
 	response = client.post(API_2_ROUTE)
-	assert response.status_code == 200
-	assert response.json() == {"status" : True}
+	assert response.status_code == 405
 
 # => Path for generation without any user prompt
 def test_model2_generate_get():
