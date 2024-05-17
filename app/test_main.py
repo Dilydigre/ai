@@ -37,10 +37,11 @@ def test_model1_get():
 	assert response.status_code == 200
 	assert response.json() == {"status" : True}
 
-def test_model1_post(): # method not allowed
+def test_model1_post(): # method allowed in subpath
 	response = client.post(API_1_ROUTE)
-	assert response.status_code == 405
-
+	assert response.status_code == 200
+	assert response.json() == {"status" : True}
+	
 # => Path for generation without any user prompt
 def test_model1_generate_get():
 	response = client.get(API_1_ROUTE+SUB_PATH["generate_without_prompt"])
@@ -77,9 +78,10 @@ def test_model2_get():
 	assert response.status_code == 200
 	assert response.json() == {"status" : True}
 
-def test_model2_post(): # method not allowed
+def test_model2_post(): # method allowed in subpath
 	response = client.post(API_2_ROUTE)
-	assert response.status_code == 405
+	assert response.status_code == 200
+	assert response.json() == {"status" : True}
 
 # => Path for generation without any user prompt
 def test_model2_generate_get():
