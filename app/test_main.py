@@ -107,11 +107,11 @@ def test_model2_generate_prompt_get(): # GET is not allowed for this path, respo
 	response = client.get(API_2_ROUTE+SUB_PATH["generate_with_prompt"])
 	assert response.status_code == 405
 
-def test_model1_generate_prompt_post_no_prompt_passed(): # Return code should be 422 because no prompt is passed through API
+def test_model2_generate_prompt_post_no_prompt_passed(): # Return code should be 422 because no prompt is passed through API
 	response = client.post(API_2_ROUTE+SUB_PATH["generate_with_prompt"])
 	assert response.status_code == 422
 
-def test_model1_generate_prompt_post_prompt_passed():
+def test_model2_generate_prompt_post_prompt_passed():
 	response = client.post(API_2_ROUTE+SUB_PATH["generate_with_prompt"], data={"description" : "Test Prompt"})
 	assert response.status_code == 200
 	assert response.json()["status"]
