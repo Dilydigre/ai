@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-class GaussianNoise(n.Module):
+class GaussianNoise(nn.Module):
 	"""
 	Neural Network to add Gaussian Noise to a dataset
 
