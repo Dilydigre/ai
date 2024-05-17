@@ -35,7 +35,10 @@ async def generate_face_without_prompt() -> ImageResponse:
 				print_error(e,EMITTER)
 				traceback.print_exc()
 
-	return {"status" : False, "image" : None}
+	return {
+		"status" : False,
+		"image" : None
+	}
 
 
 async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
@@ -62,7 +65,10 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 				print_error(e,EMITTER)
 				traceback.print_exc()
 
-	return {"status" : False, "image" : None}
+	return {
+		"status" : False,
+		"image" : None
+	}
 
 # Try to load model
 model = None
@@ -81,5 +87,13 @@ except Exception as e:
 router = ModelAPI(CONFIG['api_path']['model_v2'], model is not None)
 	
 # add routes
-router.add_api_route(CONFIG['routes']['generate_without_prompt'],generate_face_without_prompt,['GET','POST'],response_model=ImageResponse)
-router.add_api_route(CONFIG['routes']['generate_with_prompt'], generate_face_with_prompt, ['POST'],response_model=ImageResponse)
+router.add_api_route(
+	CONFIG['routes']['generate_without_prompt'],
+	generate_face_without_prompt,['GET','POST'],
+	response_model=ImageResponse
+)
+router.add_api_route(
+	CONFIG['routes']['generate_with_prompt'],
+	generate_face_with_prompt, ['POST'],
+	response_model=ImageResponse
+)
