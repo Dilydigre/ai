@@ -70,7 +70,7 @@ def test_model1_generate_prompt_post_no_prompt_passed(): # Return code should be
 	assert isImage(b64decode(response.json()["image"]))
 
 def test_model1_generate_prompt_post_prompt_passed():
-	response = client.post(API_1_ROUTE+SUB_PATH["generate_with_prompt"], , data={"prompt" : "Test Prompt"})
+	response = client.post(API_1_ROUTE+SUB_PATH["generate_with_prompt"], data={"prompt" : "Test Prompt"})
 	assert response.status_code == 422
 	assert response.json()["status"]
 	assert isBase64(response.json()["image"])
