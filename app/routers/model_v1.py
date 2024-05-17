@@ -10,7 +10,7 @@ import base64 as b64
 import time as tm
 import traceback
 
-EMITTER = "API model_v1"
+EMITTER = "API model_v1" # Usefull for debug
 
 async def generate_face_without_prompt() -> ImageResponse:
 	"""
@@ -25,7 +25,10 @@ async def generate_face_without_prompt() -> ImageResponse:
 			buffer = io.BytesIO() 										  # see https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.save and
 			generated_png.save(buffer, format=CONFIG['api_image_format']) # https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.tobytes for the method
 
-			return {"status" : True, "image":b64.b64encode(buffer.getbuffer())} # return status and base64 encoded raw png image
+			return {
+				"status" : True,
+				"image" : b64.b64encode(buffer.getbuffer())
+			} # return status and base64 encoded raw png image
 		
 		except Exception as e:
 			
@@ -49,14 +52,20 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 			buffer = io.BytesIO() 										  # see https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.save and
 			generated_png.save(buffer, format=CONFIG['api_image_format']) # https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.tobytes for the method
 
-			return {"status":True,"image":b64.b64encode(buffer.getbuffer())} # return status and base64 encoded raw png image
+			return {
+				"status" : True,
+				"image" : b64.b64encode(buffer.getbuffer())
+			} # return status and base64 encoded raw png image
 		
 		except Exception as e:
 			if CONFIG['debug']:	# error message if in debug mode
 				print_error(e,EMITTER)
 				traceback.print_exc()
 
-	return {"status":False,"image":None}
+	return {
+		"status" : False,
+		"image":None
+	}
 
 # Try to load model
 model = None
@@ -73,5 +82,13 @@ except Exception as e:
 router = ModelAPI(CONFIG['api_path']['model_v1'], model is not None)
 	
 # add routes
-router.add_api_route(CONFIG['routes']['generate_without_prompt'],generate_face_without_prompt,['GET','POST'],response_model=ImageResponse)
-router.add_api_route(CONFIG['routes']['generate_with_prompt'], generate_face_with_prompt, ['POST'],response_model=ImageResponse)
+router.add_api_route(
+	CONFIG['routes']['generate_without_prompt'],
+	generate_face_without_prompt,['GET','POST'],
+	response_model=ImageResponse
+)
+router.add_api_route(
+	CONFIG['routes']['generate_with_prompt'],
+	generate_face_with_prompt, ['POST'],
+	response_model=ImageResponse
+)
