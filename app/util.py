@@ -19,7 +19,7 @@ def isBase64(s: str):
 		return False
 	return True
 
-def isValidImage(byte_image: bytes):
+def isImage(byte_image: bytes):
 	try:
 		Image.open(io.BytesIO(byte_image))
 	except:
