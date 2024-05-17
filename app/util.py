@@ -14,7 +14,7 @@ def print_error(error: Exception,emitter: str):
 
 def isBase64(s: str):
 	try:
-		base64.b64decode(s, validate=true)
+		base64.b64decode(s, validate=True)
 	except:
 		return False
 	return True
