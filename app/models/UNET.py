@@ -18,27 +18,27 @@ class UNet(nn.Module):
         # Premier niveau de convolution:
         self.layer1 = nn.ModuleList([
             nn.Conv2d(3, 64, kernel_size=3,padding=1), # conv 3*3
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(64, 64, kernel_size=3, padding=1),
-            nn.ReLU() # conv 3*3
+            nn.Tanh() # conv 3*3
         ])
 
         self.layer2 = nn.ModuleList([
             nn.MaxPool2d(kernel_size=2), # max pool
             # Deuxième niveau de convolution 
             nn.Conv2d(64, 128, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU(), 
+            nn.Tanh(), 
             nn.Conv2d(128, 128, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU()
+            nn.Tanh()
         ])
             
         self.layer3 = nn.ModuleList([
             nn.MaxPool2d(kernel_size=2), # max pool
             # Troisième niveau de convolution 
             nn.Conv2d(128, 256, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(256, 256, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU()
+            nn.Tanh()
         ])
 
 
@@ -46,9 +46,9 @@ class UNet(nn.Module):
             nn.MaxPool2d(kernel_size=2), # max pool
             # Quatrième niveau de convolution 
             nn.Conv2d(256, 512, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(512, 512, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU()
+            nn.Tanh()
         ])
         
 
@@ -56,9 +56,9 @@ class UNet(nn.Module):
             nn.MaxPool2d(kernel_size=2), # max pool
             # Cinquième niveau de convolution
             nn.Conv2d(512, 1024, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(1024, 1024, kernel_size=3, padding=1), # conv 3*3
-            nn.ReLU(),
+            nn.Tanh(),
         # Décodeur : on définit les différentes couches 
         # On va utiliser l'opération de transposée de convolution
         # Premier niveau de déconvolution  
@@ -67,36 +67,36 @@ class UNet(nn.Module):
 
         self.layer6 = nn.ModuleList([
             nn.Conv2d(1024, 512, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(512, 512, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
         # Deuxième niveau de déconvolution 
             nn.ConvTranspose2d(512, 256, kernel_size=2, stride=2)
         ])
 
         self.layer7 = nn.ModuleList([
             nn.Conv2d(512, 256, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(256, 256, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
         # Troisième niveau de déconvolution
             nn.ConvTranspose2d(256, 128, kernel_size=2, stride=2)
         ])
 
         self.layer8 = nn.ModuleList([
             nn.Conv2d(256, 128, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(128, 128, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
         # Quatrième niveau de déconvolution
             nn.ConvTranspose2d(128, 64, kernel_size=2, stride=2)
         ])
 
         self.layer9 = nn.ModuleList([
             nn.Conv2d(128, 64, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Conv2d(64, 64, kernel_size=3, padding=1),
-            nn.ReLU(),
+            nn.Tanh(),
         # Couche de sortie
             nn.Conv2d(64, 3, kernel_size=1) 
         ])
