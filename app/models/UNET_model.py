@@ -21,7 +21,7 @@ class UNETModel:
 # On crée ensuite les deux fonctions nécessaires à la liaison entre l'AI et l'API 
 
 	def generate_without_prompt(self):
-		#tensor 3 512 512 avec 0 partt 
+		#tensor 3 512 512 avec tous les coefficients à 0 
 		noise_image = self.gaussian_noise() #image bruitée
 		unet_image = self.unet(noise_image) #image bruitée passée à travers le U-Net
 		resized_image = torch.reshape(unet_image, (512, 512, 3)) # on reshape l'image avec torch.reshape
@@ -29,4 +29,4 @@ class UNETModel:
 		return normalized_image
 
 	def generate_with_prompt(self, prompt):
-		return generate_without_prompt()
+		return self.generate_without_prompt()
