@@ -83,7 +83,7 @@ packaging==24.0
 pandas==2.2.2
 pillow==10.3.0
 pluggy==1.5.0
-protobuf==3.20.1
+protobuf
 pudb==2019.2
 pyarrow==16.1.0
 pydantic==2.7.1
