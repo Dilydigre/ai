@@ -70,7 +70,7 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 # Try to load model
 model = None
 try:
-	from app.models.model_test import Model
+	from app.models.model_test import UNETModel
 	model = UNETModel(CONFIG['model_file_path']['model_v1'])
 except Exception as e:
 	# If loading fails, print error if debug and set status to "false" i.e not ready
