@@ -9,5 +9,10 @@ CONFIG = {
 		"generate_with_prompt": "generate_prompt"
 	},
 	"api_image_format":"PNG",
-	"time_format":" %d/%m/%Y %H:%M:%S "
+	"time_format":" %d/%m/%Y %H:%M:%S ",
+
+	"model_file_path" {
+		"model_v1": "/models/models_weight/modele1.ckpt",		# path of first model ckpt file
+		"model_v2": None
+	}
 }
