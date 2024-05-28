@@ -13,6 +13,11 @@ CONFIG = {
 
 	"model_file_path" : {
 		"model_v1": "./app/models/models_weight/modele1.ckpt",		# path of first model ckpt file
-		"model_v2": None
+		"model_v2": "./app/models/models_weight/ld-model.ckpt"
+	},
+
+	"model_config_file_path" : {
+		"model_v1" : None,
+		"model_v2" : "./app/models/models_config/txt2img.yaml"
 	}
 }
