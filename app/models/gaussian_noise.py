@@ -10,7 +10,7 @@ class GaussianNoise(nn.Module):
 		- mu (optional) : the mean of the noise distribution
 		- sigma (optional and > 0) : the standard deviation of the noise distribution
 	"""   
-	def __init__(self,step,mu=0.5,sigma = 0.1):
+	def __init__(self,step,mu=0.5,sigma = 0.1, device="cpu"):
 		super().__init__()
 		self.step = step
 		self.sigma = sigma
