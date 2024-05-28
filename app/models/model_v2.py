@@ -44,7 +44,7 @@ class DiffusionModel:
 
         self.model = load_model_from_config(config, model_path)
         self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-        self.model = model.to(self.device)
+        self.model = self.model.to(self.device)
         self.sampler = PLMSSampler(self.model, device = self.device)
 
     def generate_with_prompt(self, prompt):
