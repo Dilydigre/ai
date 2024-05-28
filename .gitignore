@@ -3,3 +3,5 @@ __pycache__/
 app/__pycache__/
 app/*/__pycache__/
 app/dataset/
+app/dataset/app/models/models_weight/ld-model.ckpt
+app/models/models_weight/ld-model.ckpt
