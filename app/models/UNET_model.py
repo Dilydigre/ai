@@ -10,8 +10,8 @@ class UNETModel:
 		self.gaussian_noise = GaussianNoise(1)
 		self.unet = UNet()
 		self.model_PATH=PATH
-		self.unet.load_state_dict(torch.load(self.model_PATH)) #load le fichier de la VM de save/modele1 dans le UNET
-
+		self.unet.load_state_dict(torch.load(self.model_PATH)['model_state_dict']) #load le fichier de la VM de save/modele1 dans le UNET
+		self.unet.eval()
 # On crée ensuite les deux fonctions nécessaires à la liaison entre l'AI et l'API 
 
 	def generate_without_prompt(self):
