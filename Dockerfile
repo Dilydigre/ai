@@ -4,7 +4,7 @@ WORKDIR /app
 COPY requirements_api.txt .
 COPY requirements_ai.txt .
 
-RUN apk update && apk add git wget cargo
+RUN apk update && apk add git wget cargo musl-dev linux-headers g++ gfortran
 
 RUN pip  install --upgrade pip
 RUN pip install nvidia-pyindex
