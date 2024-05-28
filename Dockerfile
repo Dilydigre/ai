@@ -6,10 +6,10 @@ COPY requirements_ai.txt .
 
 RUN apk update && apk add git wget cargo
 
-RUN pip3 install --upgrade pip
-RUN pip3 install nvidia-pyindex
-RUN pip3 install --no-cache-dir --no-deps -r requirements_ai.txt
-RUN pip3 install --no-cache-dir -r requirements_api.txt
+RUN pip  install --upgrade pip
+RUN pip install nvidia-pyindex
+RUN pip  install --no-cache-dir --no-deps -r requirements_ai.txt
+RUN pip  install --no-cache-dir -r requirements_api.txt
 
 COPY . .
 
