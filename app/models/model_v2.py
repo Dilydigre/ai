@@ -30,7 +30,7 @@ def load_model_from_config(config, ckpt, verbose=False):
 
 class DiffusionModel:
 
-    def __init__(self, config_path,model_path, n_iter=1, n_samples=1, scale=2.0, ddim_steps=10, eta=0.0, H = 512, W = 512):
+    def __init__(self, config_path,model_path, n_iter=1, n_samples=1, scale=1.0, ddim_steps=10, eta=0.0, H = 256, W = 256):
 
         config = OmegaConf.load(config_path)
 
