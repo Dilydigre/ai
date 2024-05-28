@@ -15,7 +15,7 @@ class GaussianNoise(nn.Module):
 		self.step = step
 		self.sigma = sigma
 		self.mu = mu
-		self.noise = torch.tensor(0).to(device)
+		self.noise = torch.tensor(0).float()
 
 	def forward(self, x):
 		if self.training and self.sigma > 0:
