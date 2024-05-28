@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torchvision
-from gaussian_noise import GaussianNoise
-from UNET import UNet
+from .gaussian_noise import GaussianNoise
+from .UNET import UNet
 
 class UNETModel:
 	
