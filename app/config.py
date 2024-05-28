@@ -18,6 +18,6 @@ CONFIG = {
 
 	"model_config_file_path" : {
 		"model_v1" : None,
-		"model_v2" : "./app/models/models_config/txt2img.yaml"
+		"model_v2" : "./app/models/models_config/modele2.yaml"
 	}
 }
