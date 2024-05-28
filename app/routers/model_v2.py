@@ -74,8 +74,8 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 model = None
 
 try:
-	from app.models.model_v2 import Model
-	model = Model()
+	from app.models.model_v2 import DiffusionModel
+	model = DiffusionModel(CONFIG["model_config_file_path"]["model_v2"],CONFIG["model_file_path"]["model_v2"])
 
 except Exception as e:
 	# If loading fails, print error if debug and set status to "false" i.e not ready
