@@ -21,7 +21,7 @@ class UNETModel:
 		unet_image = self.unet(noise_image) #image bruitée passée à travers le U-Net
 		resized_image = torch.reshape(unet_image, (512, 512, 3)) # on reshape l'image avec torch.reshape
 		normalized_image = torch.clamp(resized_image, 0, 1)*255 # on normalise avec torch.clamp pour avoir des valeurs entre 0 et 255
-		return normalized_image
+		return normalized_image.detach().numpy().astype("uint8")
 
 	def generate_with_prompt(self, prompt):
 		return self.generate_without_prompt()
