@@ -30,7 +30,7 @@ def load_model_from_config(config, ckpt, verbose=False):
 
 class DiffusionModel:
 
-	def __init__(self, config_path,model_path, n_iter=1, n_samples=1, scale=2.0, ddim_steps=20, eta=0.0, H = 512, W = 512):
+	def __init__(self, config_path,model_path, n_iter=1, n_samples=1, scale=1.0, ddim_steps=10, eta=0.0, H = 512, W = 512):
 
 		config = OmegaConf.load(config_path)
 
@@ -38,7 +38,7 @@ class DiffusionModel:
 		self.n_samples = n_samples
 		self.scale = scale
 		self.ddim_steps = ddim_steps
-		self.eta = eta
+		self.ddim_eta = eta
 		self.H = H
 		self.W = W
 
@@ -57,7 +57,7 @@ class DiffusionModel:
 	            for n in trange(self.n_iter, desc="Sampling"):
 	                c = self.model.get_learned_conditioning(self.n_samples * [prompt])
 	                shape = [4, self.H//8, self.W//8]
-	                samples_ddim, _ = sampler.sample(S=self.ddim_steps,
+	                samples_ddim, _ = self.sampler.sample(S=self.ddim_steps,
 	                                                 conditioning=c,
 	                                                 batch_size=self.n_samples,
 	                                                 shape=shape,
@@ -71,8 +71,6 @@ class DiffusionModel:
 
 	                for x_sample in x_samples_ddim:
 	                    x_sample = 255. * rearrange(x_sample.cpu().numpy(), 'c h w -> h w c')
-	                    Image.fromarray(x_sample.astype(np.uint8)).save(os.path.join(sample_path, f"{base_count:04}.png"))
-	                    base_count += 1
 	                all_samples.append(x_samples_ddim)
 
 
