@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements_api.txt
 
 COPY . .
 
-RUN wget -O app/models/models_weight/ld-model.ckpt https://ommer-lab.com/files/latent-diffusion/nitro/txt2img-f8-large/model.ckpt
+RUN wget -q -O app/models/models_weight/ld-model.ckpt https://ommer-lab.com/files/latent-diffusion/nitro/txt2img-f8-large/model.ckpt
 
 EXPOSE 5000
 
