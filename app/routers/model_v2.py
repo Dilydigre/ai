@@ -49,7 +49,7 @@ async def generate_face_with_prompt(prompt: RequestPrompt) -> ImageResponse:
 	if model is not None:
 		try:
 			
-			generated_array = model.generate_with_prompt(prompt)
+			generated_array = model.generate_with_prompt(prompt.description)
 			generated_png = Image.fromarray(generated_array) # convert to png
 
 			buffer = io.BytesIO() 										  # see https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.save and
