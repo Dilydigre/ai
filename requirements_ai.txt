@@ -62,6 +62,7 @@ multidict==6.0.5
 namex==0.0.8
 networkx==3.3
 numpy==1.26.4
+nvidia-pyindex
 nvidia-cublas-cu12
 nvidia-cuda-cupti-cu12
 nvidia-cuda-nvrtc-cu12
