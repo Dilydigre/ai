@@ -16,7 +16,8 @@ class UNETModel:
 
 	def generate_without_prompt(self):
 		#tensor 3 512 512 avec tous les coefficients à 0 
-		noise_image = self.gaussian_noise() #image bruitée
+		input_tensor = torch.zeros(3,512,512)
+		noise_image = self.gaussian_noise(input_tensor) #image bruitée
 		unet_image = self.unet(noise_image) #image bruitée passée à travers le U-Net
 		resized_image = torch.reshape(unet_image, (512, 512, 3)) # on reshape l'image avec torch.reshape
 		normalized_image = torch.clamp(resized_image, 0, 1)*255 # on normalise avec torch.clamp pour avoir des valeurs entre 0 et 255
