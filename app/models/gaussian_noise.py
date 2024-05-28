@@ -17,7 +17,7 @@ class GaussianNoise(nn.Module):
 		self.mu = mu
 		self.noise = torch.tensor(0).to(device)
 
-	def forward(self, input):
+	def forward(self, x):
 		if self.training and self.sigma > 0:
 			for i in range(self.step):
 			# Generate noise which follows gaussian distribution
