@@ -30,7 +30,7 @@ def load_model_from_config(config, ckpt, verbose=False):
 
 class DiffusionModel:
 
-    def __init__(self, config_path,model_path, n_iter=1, n_samples=1, scale=1.0, ddim_steps=10, eta=0.0, H = 512, W = 512):
+    def __init__(self, config_path,model_path, n_iter=1, n_samples=1, scale=2.0, ddim_steps=10, eta=0.0, H = 512, W = 512):
 
         config = OmegaConf.load(config_path)
 
@@ -66,7 +66,7 @@ class DiffusionModel:
                                                      unconditional_conditioning=uc,
                                                      eta=self.ddim_eta)
 
-                    x_samples_ddim = model.decode_first_stage(samples_ddim)
+                    x_samples_ddim = self.model.decode_first_stage(samples_ddim)
                     x_samples_ddim = torch.clamp((x_samples_ddim+1.0)/2.0, min=0.0, max=1.0)
 
                     for x_sample in x_samples_ddim:
