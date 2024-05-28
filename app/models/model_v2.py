@@ -6,9 +6,9 @@ from tqdm import tqdm, trange
 from einops import rearrange
 from torchvision.utils import make_grid
 
-from ldm.util import instantiate_from_config
-from ldm.models.diffusion.ddim import DDIMSampler
-from ldm.models.diffusion.plms import PLMSSampler
+from app.models.ldm.util import instantiate_from_config
+from app.models.ldm.models.diffusion.ddim import DDIMSampler
+from app.models.ldm.models.diffusion.plms import PLMSSampler
 
 
 def load_model_from_config(config, ckpt, verbose=False):
