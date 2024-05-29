@@ -4,7 +4,7 @@ WORKDIR /app
 COPY requirements_api.txt .
 COPY requirements_ai.txt .
 
-RUN apt update && apt install git wget cargo
+RUN apt update -y && apt install git wget cargo
 
 RUN pip  install --upgrade pip
 RUN pip install nvidia-pyindex
