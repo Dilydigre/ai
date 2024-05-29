@@ -19,7 +19,7 @@ RUN mkdir repos
 WORKDIR repos
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-RUN apk install git-lfs
+RUN apt install git-lfs
 RUN git lfs install
 RUN git clone https://github.com/Dilydigre/ai.git
 
