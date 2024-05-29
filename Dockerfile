@@ -1,10 +1,10 @@
-FROM python:3.10-alpine
+FROM python:3.10
 WORKDIR /app
 
 COPY requirements_api.txt .
 COPY requirements_ai.txt .
 
-RUN apk update && apk add git wget cargo musl-dev linux-headers g++ gfortran
+RUN apt update && apt install git wget cargo
 
 RUN pip  install --upgrade pip
 RUN pip install nvidia-pyindex
