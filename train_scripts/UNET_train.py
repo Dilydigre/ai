@@ -23,7 +23,7 @@ parameters=model.parameters()
 # Une fois le UNet créé, on définit une fonction de perte : 
 loss_fn = torch.nn.MSELoss()
 #on va utiliser un optimiseur qui va permettre de minimiser la fonction de perte
-optimizer = torch.optim.Adam(parameters, lr=0.001) #lr est le learning rate (j'ai utilisé celui de l'exemple de PyTorch)
+optimizer = torch.optim.Adam(parameters, lr=0.0001) #lr est le learning rate (j'ai utilisé celui de l'exemple de PyTorch)
 
 
 
@@ -42,6 +42,7 @@ for epoch in range(num_epochs):
             outputs = model(noise_image)
             loss = loss_fn(img, outputs) #calcule les écarts entre les données du modèle et les données réelles
             loss.backward() # calcule les gradients de la perte par rapport aux paramètres du modèle
+            nn.utils.clip_grad_norm_(model.parameters(), 5.0)
             optimizer.step() # met à jour l'optimisation
             print(loss)
             counter+=1
