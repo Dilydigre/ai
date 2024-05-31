@@ -3,6 +3,7 @@ import torch.nn as nn
 import torchvision
 from .gaussian_noise import GaussianNoise
 from .UNET import UNet
+import numpy as np
 
 class UNETModel:
 	
